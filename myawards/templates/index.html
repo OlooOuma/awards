@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="carousel-example-2" id="index" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <div class="view">
+                <img class='' height="500px" src='https://cdn.dribbble.com/users/731566/screenshots/3187347/winner.gif'
+                    alt="First slide">
+                <div class="mask rgba-black-strong"></div>
+            </div>
+            <div class="carousel-caption">
+                <h1 class="page-title">
+                    Highest Voted Project
+                </h1>
+                <h1 class="page-title">
+                    {{top.title}}
+                </h1>
+                <div class="circles">
+                    <div class="first circle">
+                        <strong></strong>
+                        <p>{{top.design}}/10</p>
+                        <p>DESIGN</p>
+                    </div>
+
+                    <div class="second circle">
+                        <strong></strong>
+                        <p>{{top.usability}}/10</p>
+                        <p>USABILITY</p>
+                    </div>
+
+                    <div class="third circle">
+                        <strong></strong>
+                        <p>{{top.creativity}}/10</p>
+                        <p>CREATIVITY</p>
+                    </div>
+
+                    <div class="fourth circle">
+                        <strong></strong>
+                        <p>{{top.content}}/10</p>
+                        <p>CONTENT</p>
+                    </div>
+
+                    <div class="fifth circle">
+                        <strong></strong>
+                        <p>{{top.overall}}/10</p>
+                        <p>OVERALL</p>
+                    </div>
+
+                </div>
+                <a href="{% url 'project' project_id=top.id %}" class="btn btn-primary">Review</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" height="400px" src="{{project.landing_page.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text"><strong>{{project.title}}</strong>:
+                        {{project.description |truncatechars_html:170}}</p>
+                    <p class="card-text"><strong>By</strong>: {{project.user}}</p>
+                    <a href="{{project.live_link}}" target="_blank" class="btn btn-primary">Live site</a>
+                    <a href="{% url 'project' project_id=project.id %}" class="btn btn-primary">Review</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+
+{% endblock %}
