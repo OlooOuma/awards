@@ -1,0 +1,97 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Awards</title>
+  {% block styles %}
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sidenav.css' %}">
+  {% endblock %}
+  <link rel="icon"
+    href="http://www.myiconfinder.com/uploads/iconsets/256-256-5d41edabc60f4fd2cf3c9f5d35d84045-trophy.png"
+    type="icon/images">
+</head>
+
+<body>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="/">Home</a>
+    <hr>
+    <a href="/accounts/login">Register / Login</a>
+    <hr>
+    <a href="{%url 'profile'%}">Profile</a>
+    <hr>
+    <a href="{%url 'post'%}">Submit Your site</a>
+    <hr>
+  </div>
+
+
+  <div id="main">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+      <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+        aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Awwards
+            </a> </li>
+        </ul>
+        <form class="form-inline" role="search" action="{% url 'search' %}">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="project">
+            </div>
+          </form>
+    
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          {% if user.is_authenticated %}
+          <ul>
+            <li>
+              <a class='btn btn-default' href="/logout">Logout</a>
+            </li>
+          </ul>
+          {% else %}
+          <li>
+            <a class='btn btn-default' href="/accounts/login">Login / Register</a>
+          </li>
+          {% endif %}
+      </div>
+      </ul> </nav>
+      {% block content %} {%endblock%}
+
+  </div>
+ 
+  <!--/.Navbar -->
+  </div>
+
+
+  {% block scripts %}
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+  </script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.5/js/mdb.min.js"></script>
+
+  <!-- <script src="{% static 'script.js' %}"></script> -->
+  <script type="text/javascript" src="{%static 'js/scripts.js'%}"></script>
+  {% endblock %}
+</body>
+
+</html>
