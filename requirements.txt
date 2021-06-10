@@ -1,4 +1,4 @@
-# Django==1.11
+# Django==2.2.24
 # djangorestframework==3.10.3
 # pytz==2019.2
 autopep8==1.4.4
@@ -6,7 +6,7 @@ certifi==2019.6.16
 chardet==3.0.4
 confusable-homoglyphs==3.2.0
 dj-database-url==0.5.0
-Django==1.11
+Django==2.2.24
 django-bootstrap3==11.1.0
 django-bootstrap4==0.0.8
 django-heroku==0.3.1
